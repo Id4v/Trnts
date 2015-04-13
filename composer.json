@@ -1,0 +1,21 @@
+{
+    "name": "id4v/tornts",
+    "require": {
+        "silex/silex": "~1.2",
+        "deralex/yaml-config-service-provider": "1.0.x-dev",
+        "twig/twig": "1.*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "":"src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Rimbault",
+            "email": "rimbault.david@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

@@ -1,0 +1,5 @@
+routes:
+    homepage:
+        path: /
+        controller: Id4v\TorrentsBundle\Controller\HomeController::index
+        methods: GET|POST|PUT
