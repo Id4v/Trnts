@@ -2,7 +2,7 @@
     "name": "id4v/tornts",
     "require": {
         "silex/silex": "~1.2",
-        "deralex/yaml-config-service-provider": "1.0.x-dev",
+        "deralex/yaml-config-service-provider": "1.0.1",
         "twig/twig": "1.*"
     },
     "license": "MIT",

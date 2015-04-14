@@ -1,0 +1,34 @@
+db:
+  image: mysql/mysql-server:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: lol
+
+php56:
+  build: ./containers/php56
+  environment:
+    DOMAIN_NAME: trnts56.docker
+    SYMFONY_ENV: dev
+  links:
+    - db
+  volumes:
+      - .:/var/www/html
+
+php55:
+  build: ./containers/php55
+  environment:
+    DOMAIN_NAME: trnts55.docker
+    SYMFONY_ENV: dev
+  links:
+    - db
+  volumes:
+      - .:/var/www/html
+
+php54:
+  build: ./containers/php54
+  environment:
+    DOMAIN_NAME: trnts54.docker
+    SYMFONY_ENV: dev
+  links:
+    - db
+  volumes:
+      - .:/var/www/html
