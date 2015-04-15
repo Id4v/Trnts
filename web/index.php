@@ -8,16 +8,17 @@
 
 // web/index.php
 require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../Kernel.php';
 
 $app = new Silex\Application();
-
 $app["debug"]=true;
 
-$app->register(new \Id4v\CoreBundle\Router\Router());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-  'twig.path' => array(__DIR__."/views",__DIR__.'/../src/Id4v/TorrentsBundle/Resources/views'),
+    'twig.path' => array(__DIR__."/views"),
 ));
-// ... definitions
+$app->register(new \Id4v\CoreBundle\Router\Router());
 
+$kernel = new Kernel($app);
+$kernel->boot();
 
 $app->run();
