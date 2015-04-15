@@ -4,6 +4,6 @@ api:
         user: moustik1234
         password: jegerdansk
     betaseries:
-        token:
+        key: 1bc7b8a25503
         version: 2.4
 
