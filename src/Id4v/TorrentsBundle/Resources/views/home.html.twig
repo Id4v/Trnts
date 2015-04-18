@@ -1,4 +1,30 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
+    <table class="table table-striped table-bordered">
+        {% for show in response.shows %}
+            <tr class="info">
+                <td colspan="6">{{ show.title }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Titre</th>
+                <th>Saison</th>
+                <th>Episode</th>
+                <th>Date de diffusion</th>
+            </tr>
+            {% for episode in show.unseen %}
+                <tr>
+                    <td></td>
+                    <td>{{ episode.title }} ({{ episode.code }})</td>
+                    <td>{{ episode.season }}</td>
+                    <td>{{ episode.episode }}</td>
+                    <td>{{ episode.date }}</td>
+                    <td>
+                        <a href="{{ app.url_generator.generate('search',{'id':episode.id}) }}">Voir Torrents</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
 {% endblock %}

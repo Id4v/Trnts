@@ -2,15 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: david
- * Date: 15/04/15
- * Time: 22:51
+ * Date: 18/04/15
+ * Time: 22:56
  */
 
 namespace Id4v\TorrentsBundle\Utils;
 
 
-class BetaSeriesApi extends ApiClass{
-    private $token="";
+class T411Api extends ApiClass{
+
+    private $token;
 
     protected static $instance;
 
@@ -30,30 +31,20 @@ class BetaSeriesApi extends ApiClass{
             return;
 
         $this->headers=array();
-        $this->baseUrl="https://api.betaseries.com/";
+        $this->baseUrl="https://api.t411.io/";
         if(isset($config['baseUrl'])){
             $this->baseUrl=$config["baseUrl"];
         }
 
         $headers=array(
-            "Accept: application/json",
+          "Accept: application/json",
         );
-
-        if(isset($config["version"])){
-            $headers[]="X-BetaSeries-Version: ".$config["version"];
-        }
-
-        if(!isset($config["key"])){
-            return null;
-        }
-        $headers[]="X-BetaSeries-Key: ".$config["key"];
         $this->headers=$headers;
     }
 
-
     protected function setHeaders(&$curl, $headers)
     {
-        $headers[]="X-BetaSeries-Token: ".$this->token;
+        $headers[]="Authorization: ".$this->token;
 
         parent::setHeaders($curl,
           $headers);
@@ -62,15 +53,14 @@ class BetaSeriesApi extends ApiClass{
     public function authUser($login,$mdp){
 
         $params=array(
-            "login"=>$login,
-            "password"=>md5($mdp)
+          "username"=>$login,
+          "password"=>$mdp
         );
 
-        $datas=$this->post("members/auth",$params);
+        $datas=$this->post("auth",$params);
         $datas=json_decode($datas);
         $this->token=$datas->token;
         return $datas;
     }
-
 
 }

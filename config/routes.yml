@@ -3,3 +3,7 @@ routes:
         path: /
         controller: Id4v\TorrentsBundle\Controller\HomeController::index
         methods: GET|POST|PUT
+    search:
+        path: /search/{id}
+        controller: Id4v\TorrentsBundle\Controller\HomeController::search
+        methods: GET|POST

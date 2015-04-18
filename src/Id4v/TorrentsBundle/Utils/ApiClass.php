@@ -14,7 +14,8 @@ class ApiClass {
     protected $headers;
 
 
-    private function setHeaders(&$curl,$headers){
+
+    protected function setHeaders(&$curl,$headers){
         $headers=array_merge($headers,$this->headers);
         curl_setopt($curl,CURLOPT_HTTPHEADER,$headers);
     }

@@ -15,6 +15,9 @@ class BaseBundler {
     public function load(Application $app){
         $reflection=new \ReflectionClass($this);
         $directory=dirname($reflection->getFileName())."/";
-        $app['twig.loader.filesystem']->addPath($directory."Resources/views");
+        $viewDir=$directory."Resources/views";
+        if(is_dir($viewDir)) {
+            $app['twig.loader.filesystem']->addPath($viewDir);
+        }
     }
 }

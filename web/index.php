@@ -12,6 +12,7 @@ require_once __DIR__.'/../Kernel.php';
 
 $app = new Silex\Application();
 $app["debug"]=true;
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new \DerAlex\Silex\YamlConfigServiceProvider(__DIR__."/../config/config.yml"));
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => array(__DIR__."/views"),

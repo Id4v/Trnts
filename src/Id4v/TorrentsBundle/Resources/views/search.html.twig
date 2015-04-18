@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <table class="table table-striped">
+        {% for torrent in torrents %}
+            {{ dump(torrent) }}
+            <tr>
+                <td>
+                    {{ torrent.name }}
+                </td>
+                <td>
+                    <b>
+                        <span class="text-success">{{ torrent.seeders }}</span>/<span class="text-danger">{{ torrent.leechers }}</span>
+                    </b>
+                </td>
+                <td>
+                    {{ torrent.size/(1024*1024*1024) }}
+                </td>
+                <td>
+                    {{ torrent.added|date("d/m/Y") }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
